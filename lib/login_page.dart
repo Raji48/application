@@ -1,16 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:homepage/nav.dart';
+import 'package:homepage/login_page.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
+
+//SharedPreferences localStorage;
 
 
 class LoginPage extends StatefulWidget{
   _LoginPageState createState() => _LoginPageState();
 
+
 }
 class _LoginPageState extends State<LoginPage>{
+
   Widget build(BuildContext context){
+    TextEditingController emailController =new TextEditingController();
+    TextEditingController pwdController =new TextEditingController();
     return Scaffold(
-      body:SafeArea(
+      resizeToAvoidBottomPadding: false,
+      body:GestureDetector(
+        onTap: (){
+          FocusScope.of(context).unfocus();
+        },
+
         child: ListView(
+
           padding:EdgeInsets.symmetric(horizontal: 80.0),
           children: <Widget>[
             Column(
@@ -33,6 +47,7 @@ class _LoginPageState extends State<LoginPage>{
             ),
             SizedBox(height: 40,),
             TextField(
+              controller: emailController,
               decoration:InputDecoration(
                 labelText:"Email",labelStyle:TextStyle(fontSize: 20),
                 filled:true,
@@ -40,6 +55,7 @@ class _LoginPageState extends State<LoginPage>{
             ),
             SizedBox(height: 40,),
             TextField(
+              controller: pwdController,
               obscureText:true,
               decoration:InputDecoration(
                 labelText:"Password",labelStyle:TextStyle(fontSize: 20),
@@ -59,7 +75,9 @@ class _LoginPageState extends State<LoginPage>{
 
                     ),
                     color:new Color(4657784547656785558) ,
-                    onPressed: (){
+                    onPressed: //save,
+                        (){
+
                       Navigator.push(context, MaterialPageRoute(builder: (context)=>Nav(),),
                       );
                       
@@ -73,7 +91,9 @@ class _LoginPageState extends State<LoginPage>{
         ),
 
       ),
+
     );
   }
 
 }
+

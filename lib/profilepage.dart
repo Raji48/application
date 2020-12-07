@@ -1,13 +1,15 @@
 import'package:flutter/material.dart';
 import 'package:homepage/main_drawer.dart';
+
+
 class ProfilePage extends StatefulWidget{
   _ProfilePageState createState()=>_ProfilePageState();
 
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  @override
-  Widget textfield({String hintText}){
+
+        Widget textfield({String hintText}){
     return Material(
       elevation: 5,
       shadowColor: Colors.grey,
@@ -28,97 +30,134 @@ class _ProfilePageState extends State<ProfilePage> {
           borderSide:BorderSide.none
         ),
       ),
+
       ),
     );
   }
   Widget build(BuildContext context) {
     return Scaffold(
-
+      backgroundColor: Colors.white,
+       resizeToAvoidBottomPadding: false,
       appBar: AppBar(title: Text("Profile "),
 
 
       ),
       drawer: MainDrawer(),
-      body:
-      Center(
-        //alignment: Alignment.center,
+      body:GestureDetector(
+      onTap: (){
+      FocusScope.of(context).unfocus();
+      },
 
+      child:Container(
+        alignment: Alignment.center,
+         child:SingleChildScrollView(
         child: Column(
+
             children: <Widget>[
+
+              Padding(
+                padding: EdgeInsets.only(bottom: 1, left: 350),
+                child: CircleAvatar(
+                  backgroundColor: Colors.black54,
+                  child: IconButton(
+
+                    icon: Icon(Icons.edit, color: Colors.white,),
+
+                    onPressed: () {
+
+
+
+                    },
+                  ),
+                ),
+
+              ),
+               //new listTile(
+                        // title:new Text(_name),),
+
               Container(
-                width: 100,
+                width: double.infinity,
+                padding: EdgeInsets.all(10),
                 height: 100,
                 margin: EdgeInsets.only(
-                    top: 20,
-                    bottom: 10
+                    top: 1,
+                    bottom: 20
                 ),
                 decoration: BoxDecoration(
-
-                   shape:BoxShape.circle,
+                  shape: BoxShape.circle,
                   image: DecorationImage(
+
                       image: NetworkImage(
-                          'https://i.pinimg.com/originals/24/50/5f/24505ff0464f44f9254b0cecab995d84.jpg')
+                          'https://images.all-free-download.com/images/graphiclarge/girl_205263.jpg')
+
                   ),
                 ),
 
               ),
 
 
-      Padding(
-          padding:EdgeInsets.only(bottom:10,left:50),
-          child:CircleAvatar(
-          backgroundColor:Colors.black54,
-          child:IconButton(
-
-          icon:Icon(Icons.edit,color:Colors.white,),
-
-         onPressed:(){ },
-          ),
-        ),
-          ),
-
-        Container(
-            height:350,
-            width:double.infinity,
-            margin:EdgeInsets.symmetric(horizontal: 20),
-            child:Column(
-               children:[
-              textfield(
-                hintText:"Name",
-              ),
-              textfield(
-                hintText:"Surname",
-              ),
-              textfield(
-                hintText:"Email",
-              ),
-              textfield(
-                hintText:"Mobile",
-              ),
-              textfield(
-                hintText:"Password",
-              ),
-
-
+              //  Text("Hello"),
               Container(
-                height:50,
-                width:100,
-                child:RaisedButton(
-                  onPressed: (){},
-                  color:Colors.black,
-                  child:Center(
-                    child:Text("Save",style:TextStyle(fontSize: 23,color:Colors.white,),
+
+                height: 450,
+                width: double.infinity,
+                margin: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+
+                  children: [
+                    textfield(
+                      hintText: "Name",
+
                     ),
-                  ),
+
+                     textfield(
+                      hintText: "Surname",
+                    ),
+                    textfield(
+                      hintText: "Email",
+                    ),
+                    textfield(
+                      hintText: "Mobile",
+                    ),
+                    textfield(
+                      hintText: "Password",
+                    ),
+
+
+                    Container(
+
+                      height: 50,
+                      width: 100,
+                      child: RaisedButton(
+                        // onPressed: () {},
+                         color: Colors.blue,
+                        child: Center(
+                          child: Text("Save", style: TextStyle(fontSize: 23,
+                            color: Colors
+                                .black,),
+                          ),
+                        ),
+                        onPressed: () {
+
+                        },
+                      ),
+                    ),
+
+
+                  ],
                 ),
               ),
-            ],
-            ),
-          ),
 
-        ]
+            ]
+        ),
+         ),
       ),
       ),
     );
   }
+  
+
+
 }
+
+
