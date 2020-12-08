@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:homepage/login_page.dart';
+import 'package:homepage/profilepage.dart';
 
 
 class MainDrawer extends StatelessWidget{
+
   Widget build(BuildContext context){
     return Drawer(
 
@@ -34,8 +36,7 @@ class MainDrawer extends StatelessWidget{
                          // Text("user name",Style:TextStyle(fontSize: 25,color:Colors.green),)
 
                       ),
-                      Text(
-                      'Raji',style:TextStyle(fontSize: 25,color:Colors.white),)
+                      //Text( 'Raji',style:TextStyle(fontSize: 25,color:Colors.white),)
 
 
                 ],
@@ -43,6 +44,8 @@ class MainDrawer extends StatelessWidget{
 
             ),
           ),
+
+
           ListTile(
             leading:Icon(Icons.home),
             title:Text('About',style:TextStyle(fontSize: 18),),
