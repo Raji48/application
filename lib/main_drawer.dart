@@ -36,7 +36,7 @@ class MainDrawer extends StatelessWidget{
                          // Text("user name",Style:TextStyle(fontSize: 25,color:Colors.green),)
 
                       ),
-                      //Text( 'Raji',style:TextStyle(fontSize: 25,color:Colors.white),)
+                      Text( 'Raji',style:TextStyle(fontSize: 25,color:Colors.white),)
 
 
                 ],

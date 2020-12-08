@@ -36,17 +36,14 @@ class _ProfilePageState extends State<ProfilePage> {
     if(_username.text == "" && _Sname.text == "" && _email.text =="" && _mobile.text =="" && _pass.text =="" ) {
       print("invalid");  }
     else{
-      //Navigator.push
+
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder:
           (context)=>View(name: nameuser,suname:sname,umail:mail,umobilenum:mobilenum ,pass: passuser,),),
       );
 
     }
 
-
-    }
-
-
+  }
 
   Widget textfield({String hintText}){
     return Material(
@@ -88,11 +85,12 @@ class _ProfilePageState extends State<ProfilePage> {
         },
 
         child:SafeArea(
-          // alignment: Alignment.center,
+
           child:SingleChildScrollView(
             child: Column(
 
               children: <Widget>[
+
 
                 Padding(
                   padding: EdgeInsets.only(bottom: 1, left: 350),
@@ -105,13 +103,13 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
 
 
+
                       },
                     ),
                   ),
 
                 ),
-                //new listTile(
-                // title:new Text(_name),),
+
 
                 Container(
                   width: double.infinity,
@@ -197,11 +195,9 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               onPressed: (){
                                 saveData();
-                                //  print("hello");
+
 
                               },
-                              //onPressed:() =>
-                              //   saveData(),
 
 
 
