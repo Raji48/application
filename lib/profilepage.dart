@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import'package:flutter/material.dart';
 import 'package:homepage/main_drawer.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:homepage/view.dart';
+import 'package:image_picker/image_picker.dart';
 
 SharedPreferences localStorage;
 class ProfilePage extends StatefulWidget{
@@ -12,6 +15,8 @@ class ProfilePage extends StatefulWidget{
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  PickedFile _imageFile;
+  final ImagePicker _picker = ImagePicker();
 
   final _username =new TextEditingController();
   final _Sname =new TextEditingController();
@@ -44,6 +49,7 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
   }
+
 
   Widget textfield({String hintText}){
     return Material(
@@ -79,20 +85,20 @@ class _ProfilePageState extends State<ProfilePage> {
 
       ),
       drawer: MainDrawer(),
-      body:GestureDetector(
-        onTap: (){
+      body: GestureDetector(
+        onTap: () {
           FocusScope.of(context).unfocus();
         },
 
-        child:SafeArea(
+        child: SafeArea(
 
-          child:SingleChildScrollView(
+          child: SingleChildScrollView(
             child: Column(
 
               children: <Widget>[
 
 
-                Padding(
+               Padding(
                   padding: EdgeInsets.only(bottom: 1, left: 350),
                   child: CircleAvatar(
                     backgroundColor: Colors.black54,
@@ -103,7 +109,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
 
 
-
                       },
                     ),
                   ),
@@ -112,28 +117,42 @@ class _ProfilePageState extends State<ProfilePage> {
 
 
                 Container(
-                  width: double.infinity,
-                  padding: EdgeInsets.all(10),
-                  height: 100,
-                  margin: EdgeInsets.only(
-                      top: 1,
-                      bottom: 20
-                  ),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-
-                        image: NetworkImage(
+                  child: Stack(children: [
+                    CircleAvatar(
+                        radius: 70.0,
+                     //   backgroundImage: NetworkImage(
+                          //  'https://images.all-free-download.com/images/graphiclarge/girl_205263.jpg')
+                        backgroundImage:_imageFile == null ?   NetworkImage(
                             'https://images.all-free-download.com/images/graphiclarge/girl_205263.jpg')
+                            :FileImage(File(_imageFile.path)),
 
                     ),
-                  ),
+                    Positioned(
+                      bottom: 20.0,
+                      right: 20.0,
+                      child: InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            builder: ((builder) => bottomSheet()),
+                          );
+                        },
+                        child: Icon(
+                            Icons.camera_alt, color: Colors.teal,
+                            size: 28.0
 
+                        ),
+                      ),
+                    ),
+
+                  ],
+                  ),
                 ),
 
 
 
-                Container(
+
+               Container(
 
                   height: 450,
                   width: double.infinity,
@@ -143,89 +162,131 @@ class _ProfilePageState extends State<ProfilePage> {
 
                     children: [
                       TextFormField(
-                        controller:_username,
+                        controller: _username,
                         decoration: InputDecoration(
                           hintText: "Name",
                         ),
                       ),
 
                       TextFormField(
-                        controller:_Sname,
+                        controller: _Sname,
                         decoration: InputDecoration(
                           hintText: "Surname",
                         ),
                       ),
 
                       TextFormField(
-                        controller:_email,
+                        controller: _email,
                         decoration: InputDecoration(
                           hintText: "Email",
                         ),
                       ),
                       TextFormField(
-                        controller:_mobile,
+                        controller: _mobile,
                         decoration: InputDecoration(
                           hintText: "Mobile number",
                         ),
                       ),
                       TextFormField(
-                        controller:_pass,
+                        controller: _pass,
                         decoration: InputDecoration(
                           hintText: "Password",
                         ),
                       ),
 
-
-                      SizedBox(height: 40,),
+                     SizedBox(height: 40,),
                       Column(
-                        children:<Widget>[
+                        children: <Widget>[
                           ButtonTheme(
 
                             height: 50,
-                            //width: 100,
-                            child: RaisedButton(
+                              child: RaisedButton(
                               color: Colors.blue,
                               child: Center(
-                                child: Text("Save", style: TextStyle(fontSize: 23,
+                                child: Text(
+                                  "Save", style: TextStyle(fontSize: 23,
                                   color: Colors
                                       .black,),
                                 ),
 
 
                               ),
-                              onPressed: (){
+                              onPressed: () {
                                 saveData();
-
-
                               },
-
-
 
                             ),
 
                           ),
                         ],
                       ),
+                       ],
 
-                    ],
+
+
 
                   ),
-                ),
+
+          )
+            ],
+      ),
 
 
-
-
-              ],
-
-              //  Text("hello ${widget.name}"),
             ),
           ),
-        ),
-
       ),
-    );
+        );
+
+
+
+  }
+
+     Widget bottomSheet(){
+      return Container(
+          height:100.0,
+          width:MediaQuery.of(context).size.width,
+          margin: EdgeInsets.symmetric(
+            horizontal:20,vertical: 20,
+          ),
+          child:Column(
+            children:<Widget>[
+              Text("Choose Profile Photo",style:TextStyle(fontSize: 20),),
+              SizedBox(
+                height:20,
+              ),
+             Row(
+               mainAxisAlignment: MainAxisAlignment.center,
+              children:<Widget>[
+                  // ButtonTheme(
+                    //child:
+                     FlatButton.icon(onPressed: (){
+                       takePhoto(ImageSource.camera);
+                     },
+                           icon:Icon(Icons.edit),
+                          label:Text("Camera"), ),
+                FlatButton.icon(onPressed: (){
+                  takePhoto(ImageSource.gallery);
+                },
+                  icon:Icon(Icons.image),
+                  label:Text("Gallery"), ),
+
+                ],
+              ),
+            ],
+          )
+      );
+    }
+    void takePhoto(ImageSource source) async{
+     final pickedFile =await _picker.getImage(source: source,);
+     setState(() {
+       _imageFile = pickedFile;
+     });
+
   }
 
 }
+
+
+
 
 
