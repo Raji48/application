@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:homepage/homepage.dart';
+import 'package:homepage/main_drawer.dart';
 import 'package:homepage/profilepage.dart';
 
 class View extends StatefulWidget{
@@ -51,10 +53,28 @@ class _ViewState extends State<View> {
                        onPressed: //save,
                            (){
 
-                         Navigator.push(context, MaterialPageRoute(builder: (context)=>ProfilePage(),),
+                         Navigator.of(context).push(
+                             MaterialPageRoute(builder: (context)=> ProfilePage(),)
+
                          );
 
-                       },
+
+
+                       /*  Navigator.push(context, MaterialPageRoute(builder: (context){
+                        return ProfilePage();})
+                             );
+                             setState(() {
+                               Navigator.pushNamed(context,"/ProfilePage");
+                             }); */
+
+                           }
+
+                            // Navigator.pop(context,"/View");
+
+                             //Navigator.pushNamed(context, '/ProfilePage')
+                            // return MaterialPageRoute(builder: (_) => ProfilePage());
+
+                     //  },
                      ),
                    ),
 
@@ -66,3 +86,5 @@ class _ViewState extends State<View> {
   }
 
   }
+
+

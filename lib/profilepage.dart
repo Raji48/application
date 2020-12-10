@@ -15,6 +15,9 @@ class ProfilePage extends StatefulWidget{
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  bool x=false,y=true,z=false;
+
+
   PickedFile _imageFile;
   final ImagePicker _picker = ImagePicker();
 
@@ -23,6 +26,12 @@ class _ProfilePageState extends State<ProfilePage> {
   final _email =new TextEditingController();
   final _mobile =new TextEditingController();
   final _pass = new TextEditingController();
+
+
+
+
+
+
 
   saveData() async{
     final localStorage = await SharedPreferences.getInstance();
@@ -51,43 +60,54 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
 
-  Widget textfield({String hintText}){
-    return Material(
-      elevation: 5,
+  /*Widget textfield({String hintText}){
+   z ?   TextFormField(
+
+    /*  elevation: 5,
       shadowColor: Colors.grey,
       shape:RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),
-      child:TextFormField(
+      child:  TextFormField(*/
         decoration:InputDecoration(
           hintText:hintText,
-          hintStyle: TextStyle(
+          hintStyle:  TextStyle(
             letterSpacing: 2,color:Colors.black,
             fontWeight: FontWeight.bold,
-          ),
+          ) ,
           fillColor:Colors.white,
           filled:true,
           border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
               borderSide:BorderSide.none
           ),
-        ),
+        ) ,
 
-      ),
-    );
-  }
+     // ),
+    ):Container();
+  }*/
   Widget build(BuildContext context) {
+
+
     return Scaffold(
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(title: Text("Profile "),
 
 
       ),
-      drawer: MainDrawer(),
+      //drawer: MainDrawer(),
       body: GestureDetector(
         onTap: () {
+
           FocusScope.of(context).unfocus();
+          if(z=!z){
+            TextFormField(
+            focusNode: FocusNode(),
+          enableInteractiveSelection: true,
+            );
+          }
         },
 
         child: SafeArea(
@@ -97,32 +117,48 @@ class _ProfilePageState extends State<ProfilePage> {
 
               children: <Widget>[
 
+            //Container(
+            //child: Stack(children: [
+              y ? Positioned(
+                //left: 20.0,
+              // right: 20.0,
 
-               Padding(
-                  padding: EdgeInsets.only(bottom: 1, left: 350),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.black54,
-                    child: IconButton(
+                    child:Align(
+                      alignment: Alignment.topRight,
+                     child: FlatButton.icon(onPressed: (){
 
-                      icon: Icon(Icons.edit, color: Colors.white,),
+                                setState(() {
+                                  x=!x;
+                                });
+                                setState(() {
+                                  y=!y;
+                                });
+                                setState(() {
+                                  z=!z;
 
-                      onPressed: () {
-
+                                });
 
                       },
-                    ),
+                        icon:Icon(Icons.edit),
+                        label:Text("edit"), ),
+
                   ),
+              ): Container(),
+                   //:Container(),
 
-                ),
 
 
-                Container(
+
+                       //  ],
+              //  ),
+         //   ),
+
+
+                 Container(
                   child: Stack(children: [
                     CircleAvatar(
                         radius: 70.0,
-                     //   backgroundImage: NetworkImage(
-                          //  'https://images.all-free-download.com/images/graphiclarge/girl_205263.jpg')
-                        backgroundImage:_imageFile == null ?   NetworkImage(
+                                     backgroundImage:_imageFile == null ?   NetworkImage(
                             'https://images.all-free-download.com/images/graphiclarge/girl_205263.jpg')
                             :FileImage(File(_imageFile.path)),
 
@@ -161,44 +197,55 @@ class _ProfilePageState extends State<ProfilePage> {
                   child: Column(
 
                     children: [
+
                       TextFormField(
-                        controller: _username,
+                       enabled:false ,
+                         controller: _username,
                         decoration: InputDecoration(
-                          hintText: "Name",
+                          hintText :"Name",
                         ),
                       ),
 
                       TextFormField(
-                        controller: _Sname,
-                        decoration: InputDecoration(
-                          hintText: "Surname",
+
+                        enabled:false,
+                         controller: _Sname,
+                          decoration: InputDecoration(
+                           hintText: "Surname",
+
                         ),
+
                       ),
 
                       TextFormField(
+                        enabled: false,
                         controller: _email,
                         decoration: InputDecoration(
                           hintText: "Email",
                         ),
                       ),
                       TextFormField(
+                        enabled: false,
                         controller: _mobile,
                         decoration: InputDecoration(
                           hintText: "Mobile number",
                         ),
                       ),
                       TextFormField(
+                        enabled: false,
                         controller: _pass,
                         decoration: InputDecoration(
                           hintText: "Password",
                         ),
                       ),
 
-                     SizedBox(height: 40,),
-                      Column(
-                        children: <Widget>[
-                          ButtonTheme(
 
+                      SizedBox(height: 40,),
+                     // Column(
+                        //children: <Widget>[
+
+                          if (x) ButtonTheme(
+                          //  SizedBox(height: 40,),
                             height: 50,
                               child: RaisedButton(
                               color: Colors.blue,
@@ -213,13 +260,21 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                               onPressed: () {
                                 saveData();
+                                setState(() {
+                                  x=!x;
+                                });
+                                setState(() {
+                                  y=!y;
+                                });
+
+
                               },
 
                             ),
 
-                          ),
-                        ],
-                      ),
+                          ),Container()
+                       // ],
+                      //),
                        ],
 
 
@@ -235,11 +290,13 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
       ),
+     // drawer: MainDrawer(),
         );
 
 
 
   }
+
 
      Widget bottomSheet(){
       return Container(
@@ -262,7 +319,7 @@ class _ProfilePageState extends State<ProfilePage> {
                      FlatButton.icon(onPressed: (){
                        takePhoto(ImageSource.camera);
                      },
-                           icon:Icon(Icons.edit),
+                           icon:Icon(Icons.camera),
                           label:Text("Camera"), ),
                 FlatButton.icon(onPressed: (){
                   takePhoto(ImageSource.gallery);
@@ -283,6 +340,8 @@ class _ProfilePageState extends State<ProfilePage> {
      });
 
   }
+
+
 
 }
 
