@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/main_drawer.dart';
 import 'package:homepage/profilepage.dart';
+void main() {
+  runApp(View());
+
+
+
+}
 
 class View extends StatefulWidget{
   final String name,pass,suname,umail,umobilenum;
@@ -53,10 +59,10 @@ class _ViewState extends State<View> {
                        onPressed: //save,
                            (){
 
-                         Navigator.of(context).push(
-                             MaterialPageRoute(builder: (context)=> ProfilePage(),)
+                        Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(builder: (context)=>ProfilePage())
 
-                         );
+                        );
 
 
 
@@ -69,7 +75,7 @@ class _ViewState extends State<View> {
 
                            }
 
-                            // Navigator.pop(context,"/View");
+                             //Navigator.pop(context,"/View");
 
                              //Navigator.pushNamed(context, '/ProfilePage')
                             // return MaterialPageRoute(builder: (_) => ProfilePage());

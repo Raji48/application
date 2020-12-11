@@ -3,7 +3,14 @@ import 'package:homepage/login_page.dart';
 import 'package:homepage/profilepage.dart';
 
 
-class MainDrawer extends StatelessWidget{
+class MainDrawer extends StatefulWidget {
+  final String name;
+
+  const MainDrawer({Key key, this.name }) : super(key: key);
+
+  _MainDrawerState createState() => _MainDrawerState();
+}
+class _MainDrawerState extends State<MainDrawer>{
 
   Widget build(BuildContext context){
     return Drawer(
@@ -36,8 +43,19 @@ class MainDrawer extends StatelessWidget{
                          // Text("user name",Style:TextStyle(fontSize: 25,color:Colors.green),)
 
                       ),
-                      Text( 'Raji',style:TextStyle(fontSize: 25,color:Colors.white),)
+                 Container(
+                     padding: EdgeInsets.all(80),
+                     width: MediaQuery.of(context).size.width,
+                      child:Column(
+                    // mainAxisAlignment: MainAxisAlignment.start,
 
+                     children: [
+
+                      Text("Name: ${widget.name}"
+                     ,style: TextStyle(color: Colors.black,fontSize: 25),),
+                     // Text( 'Raji',style:TextStyle(fontSize: 25,color:Colors.white),)
+                    ],
+                 )),
 
                 ],
                 ),

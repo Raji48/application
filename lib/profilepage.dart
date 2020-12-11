@@ -15,7 +15,8 @@ class ProfilePage extends StatefulWidget{
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  bool x=false,y=true,z=false;
+  bool x=false,y=true;
+  bool enab=false;
 
 
   PickedFile _imageFile;
@@ -49,43 +50,25 @@ class _ProfilePageState extends State<ProfilePage> {
 
     if(_username.text == "" && _Sname.text == "" && _email.text =="" && _mobile.text =="" && _pass.text =="" ) {
       print("invalid");  }
-    else{
-
+    else {
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder:
-          (context)=>View(name: nameuser,suname:sname,umail:mail,umobilenum:mobilenum ,pass: passuser,),),
+          (context) =>
+          View(name: nameuser,
+            suname: sname,
+            umail: mail,
+            umobilenum: mobilenum,
+            pass: passuser,),),
       );
-
     }
+
+    //(context, MaterialPageRoute(builder: (context)=>Nav(),),
+
+    return MaterialPageRoute(builder: (_) => MainDrawer(name: nameuser) );
 
   }
 
 
-  /*Widget textfield({String hintText}){
-   z ?   TextFormField(
 
-    /*  elevation: 5,
-      shadowColor: Colors.grey,
-      shape:RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-      child:  TextFormField(*/
-        decoration:InputDecoration(
-          hintText:hintText,
-          hintStyle:  TextStyle(
-            letterSpacing: 2,color:Colors.black,
-            fontWeight: FontWeight.bold,
-          ) ,
-          fillColor:Colors.white,
-          filled:true,
-          border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.0),
-              borderSide:BorderSide.none
-          ),
-        ) ,
-
-     // ),
-    ):Container();
-  }*/
   Widget build(BuildContext context) {
 
 
@@ -93,21 +76,43 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.white,
       resizeToAvoidBottomPadding: false,
       resizeToAvoidBottomInset: true,
-      appBar: AppBar(title: Text("Profile "),
+      appBar: AppBar(
+          title: Text("Profile "),
+
+          actions: <Widget>[
+            y ? Positioned(
 
 
-      ),
-      //drawer: MainDrawer(),
+              child:Align(
+                alignment: Alignment.topRight,
+                child: FlatButton.icon(onPressed: (){
+
+                  setState(() {
+                    x=!x;
+                  });
+                  setState(() {
+                    y=!y;
+                  });
+                  setState(() {
+                    enab=!enab;
+                  });
+
+                },
+                  icon:Icon(Icons.edit),
+                  label:Text("edit"), ),
+
+              ),
+            ): Container(),
+
+          ],
+            ),
+
+      drawer: MainDrawer(),
       body: GestureDetector(
         onTap: () {
 
           FocusScope.of(context).unfocus();
-          if(z=!z){
-            TextFormField(
-            focusNode: FocusNode(),
-          enableInteractiveSelection: true,
-            );
-          }
+
         },
 
         child: SafeArea(
@@ -117,11 +122,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
               children: <Widget>[
 
-            //Container(
-            //child: Stack(children: [
-              y ? Positioned(
-                //left: 20.0,
-              // right: 20.0,
+             /* y ? Positioned(
+
 
                     child:Align(
                       alignment: Alignment.topRight,
@@ -134,8 +136,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   y=!y;
                                 });
                                 setState(() {
-                                  z=!z;
-
+                                      enab=!enab;
                                 });
 
                       },
@@ -143,7 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         label:Text("edit"), ),
 
                   ),
-              ): Container(),
+              ): Container(), */
                    //:Container(),
 
 
@@ -199,7 +200,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     children: [
 
                       TextFormField(
-                       enabled:false ,
+                       enabled:enab ,
                          controller: _username,
                         decoration: InputDecoration(
                           hintText :"Name",
@@ -208,7 +209,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                       TextFormField(
 
-                        enabled:false,
+                        enabled:enab,
                          controller: _Sname,
                           decoration: InputDecoration(
                            hintText: "Surname",
@@ -218,21 +219,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
 
                       TextFormField(
-                        enabled: false,
+                        enabled: enab,
                         controller: _email,
                         decoration: InputDecoration(
                           hintText: "Email",
                         ),
                       ),
                       TextFormField(
-                        enabled: false,
+                        enabled:enab,
                         controller: _mobile,
                         decoration: InputDecoration(
                           hintText: "Mobile number",
                         ),
                       ),
                       TextFormField(
-                        enabled: false,
+                        enabled: enab,
                         controller: _pass,
                         decoration: InputDecoration(
                           hintText: "Password",
