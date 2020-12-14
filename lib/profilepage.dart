@@ -122,37 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
               children: <Widget>[
 
-             /* y ? Positioned(
 
-
-                    child:Align(
-                      alignment: Alignment.topRight,
-                     child: FlatButton.icon(onPressed: (){
-
-                                setState(() {
-                                  x=!x;
-                                });
-                                setState(() {
-                                  y=!y;
-                                });
-                                setState(() {
-                                      enab=!enab;
-                                });
-
-                      },
-                        icon:Icon(Icons.edit),
-                        label:Text("edit"), ),
-
-                  ),
-              ): Container(), */
-                   //:Container(),
-
-
-
-
-                       //  ],
-              //  ),
-         //   ),
 
 
                  Container(

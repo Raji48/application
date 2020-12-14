@@ -58,8 +58,9 @@ class _LoginPageState extends State<LoginPage>{
               controller: pwdController,
               obscureText:true,
               decoration:InputDecoration(
-                labelText:"Password",labelStyle:TextStyle(fontSize: 20),
+                labelText:"Password", labelStyle:TextStyle(fontSize: 20),
                 filled:true,
+
               ),
             ),
             SizedBox(height: 40,),
