@@ -1,244 +1,183 @@
+
+
+//import 'dart:convert';
+
+import 'dart:convert';
 import'package:flutter/material.dart';
 import 'package:homepage/main_drawer.dart';
+import 'package:homepage/user.dart';
+//import 'package:flutter/src/widgets/sliver.dart';
+
+
+var  dummyjson= {
+  "value":
+ [
+    {
+      "name": "Geyana",
+      "image": "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg",
+      "viewimage": "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg"
+    },
+
+
+
+
+  {
+    "name": "Junaid",
+    "image": "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg",
+    "viewimage": "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg"
+  }
+/*  {
+    "name": "Preethi",
+    "image": "https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png",
+    "viewimage": "https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg"
+  },
+  {
+    "name": "Saro",
+    "image": "https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg",
+    "viewimage": "https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg"
+  },
+  {
+    "name": "Karthi",
+    "image": "https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg",
+    "viewimage": "https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg"
+  },
+  {
+    "name": "Baji",
+    "image": "https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg",
+    "viewimage": "https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg"
+  },
+  {
+    "name": "Safa",
+    "image": "https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg",
+    "viewimage": "https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg"
+  },
+  {
+    "name": "Aila",
+    "image": "https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg",
+    "viewimage": "https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png"
+  },
+  {
+    "name": "Mugilan",
+    "image": "https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg",
+    "viewimage": "https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg"
+  }*/
+]
+};
+
+
 class HomePage extends StatefulWidget{
 
- /* String name;
-  HomePage({this.name});
-  factory HomePage.fromJson(Map<String, dynamic >json) {
-    return HomePage(
-        name: json['name'] ,
-    );
-  }
-  Map<String, dynamic> toJson() =>
-      {
-        "name": name,
-      };
-*/
+  @override
   _HomePageState createState()=>_HomePageState();
 
 }
 
 class _HomePageState extends State<HomePage> {
 
-/*  var dummyJson = {
-    "List":[
-      {
-        "name": "Geyana",
-        "image": "https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg",
-        "viewimage": "https://www.wallpapertip.com/wmimgs/76-761129_world-famous-places-4k-wallpapers-sky-hd-wallpaper.jpg"
-      },
-      {
-        "name": "Geyana",
-        "image": "https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg",
-        "viewimage": "https://www.wallpapertip.com/wmimgs/76-761129_world-famous-places-4k-wallpapers-sky-hd-wallpaper.jpg"
-      },
-    ]
-  },
-*/
 
-  List name =["Geyana","Aishu","Junaid","Preethi","Saro","Karthi","Baji","Safa","Aila","Mugilan",
-    "Geyana","Aishu","Junaid","Preethi","Saro","Karthi","Baji","Safa","Aila","Mugilan",
-    "Geyana","Aishu","Junaid","Preethi","Saro","Karthi","Baji","Safa","Aila","Mugilan","Geyana","Aishu","Junaid","Preethi","Saro","Karthi","Baji","Safa","Aila","Mugilan",
-    "Geyana","Aishu","Junaid","Preethi","Saro","Karthi","Baji","Safa","Aila","Mugilan"];
-   List image=[
-    'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://wallpapercave.com/wp/wp3274368.jpg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4V9TSinwHExsJlvd_x0BTKwY8VxWtpLQ3A&usqp=CAU',
-     'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.goodmorningimagess.online%2F2020%2F03%2Fsweet-dp-for-whatsapp-profile.html&psig=AOvVaw3m1XNXggqDcffmqcHONBcw&ust=1608038073320000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKD_w9TGze0CFQAAAAAdAAAAABAe',
-     'https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg',
-     'https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg',
-     'https://www.decentfashion.in/wp-content/uploads/2018/09/romanticey-whatsapp-dp-imag-300x204.gif',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://wallpapercave.com/wp/wp3274368.jpg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4V9TSinwHExsJlvd_x0BTKwY8VxWtpLQ3A&usqp=CAU',
-     'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.goodmorningimagess.online%2F2020%2F03%2Fsweet-dp-for-whatsapp-profile.html&psig=AOvVaw3m1XNXggqDcffmqcHONBcw&ust=1608038073320000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKD_w9TGze0CFQAAAAAdAAAAABAe',
-     'https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg',
-     'https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg',
-     'https://www.decentfashion.in/wp-content/uploads/2018/09/romanticey-whatsapp-dp-imag-300x204.gif',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://wallpapercave.com/wp/wp3274368.jpg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4V9TSinwHExsJlvd_x0BTKwY8VxWtpLQ3A&usqp=CAU',
-     'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.goodmorningimagess.online%2F2020%2F03%2Fsweet-dp-for-whatsapp-profile.html&psig=AOvVaw3m1XNXggqDcffmqcHONBcw&ust=1608038073320000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKD_w9TGze0CFQAAAAAdAAAAABAe',
-     'https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg',
-     'https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg',
-     'https://www.decentfashion.in/wp-content/uploads/2018/09/romanticey-whatsapp-dp-imag-300x204.gif',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://wallpapercave.com/wp/wp3274368.jpg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4V9TSinwHExsJlvd_x0BTKwY8VxWtpLQ3A&usqp=CAU',
-     'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.goodmorningimagess.online%2F2020%2F03%2Fsweet-dp-for-whatsapp-profile.html&psig=AOvVaw3m1XNXggqDcffmqcHONBcw&ust=1608038073320000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKD_w9TGze0CFQAAAAAdAAAAABAe',
-     'https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg',
-     'https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg',
-     'https://www.decentfashion.in/wp-content/uploads/2018/09/romanticey-whatsapp-dp-imag-300x204.gif',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://wallpapercave.com/wp/wp3274368.jpg','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4V9TSinwHExsJlvd_x0BTKwY8VxWtpLQ3A&usqp=CAU',
-     'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.goodmorningimagess.online%2F2020%2F03%2Fsweet-dp-for-whatsapp-profile.html&psig=AOvVaw3m1XNXggqDcffmqcHONBcw&ust=1608038073320000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKD_w9TGze0CFQAAAAAdAAAAABAe',
-     'https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg',
-     'https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg',
-     'https://www.decentfashion.in/wp-content/uploads/2018/09/romanticey-whatsapp-dp-imag-300x204.gif',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-   ];
-   List viewimage =[
-     'https://www.wallpapertip.com/wmimgs/76-761129_world-famous-places-4k-wallpapers-sky-hd-wallpaper.jpg',
-  'https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://4.bp.blogspot.com/-4XMzZZUrRqs/WncjSiC7ePI/AAAAAAAAA3w/JZYCWhNbsFY_CRR0aQ1FzCxwHLjeKFHhgCLcBGAs/s1600/19.jpg',
-     'https://www.hdwallpapersfreedownload.com/uploads/large/birds/butterflies-hd-photos.jpg',
-     'https://www.trickscity.com/wp-content/uploads/2017/05/cool-facebook-profile-pictures-for-boy-hd.jpg',
-    'https://www.whatsapp-dp-images.in/wp-content/uploads/2019/10/best-whatsapp-dp-images-hd-download-8.jpg',
-     'https://www.wallpapertip.com/wmimgs/76-761129_world-famous-places-4k-wallpapers-sky-hd-wallpaper.jpg',
-     'https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://4.bp.blogspot.com/-4XMzZZUrRqs/WncjSiC7ePI/AAAAAAAAA3w/JZYCWhNbsFY_CRR0aQ1FzCxwHLjeKFHhgCLcBGAs/s1600/19.jpg',
-     'https://www.hdwallpapersfreedownload.com/uploads/large/birds/butterflies-hd-photos.jpg',
-     'https://www.trickscity.com/wp-content/uploads/2017/05/cool-facebook-profile-pictures-for-boy-hd.jpg',
-     'https://www.whatsapp-dp-images.in/wp-content/uploads/2019/10/best-whatsapp-dp-images-hd-download-8.jpg',
-     'https://www.wallpapertip.com/wmimgs/76-761129_world-famous-places-4k-wallpapers-sky-hd-wallpaper.jpg',
-     'https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://4.bp.blogspot.com/-4XMzZZUrRqs/WncjSiC7ePI/AAAAAAAAA3w/JZYCWhNbsFY_CRR0aQ1FzCxwHLjeKFHhgCLcBGAs/s1600/19.jpg',
-     'https://www.hdwallpapersfreedownload.com/uploads/large/birds/butterflies-hd-photos.jpg',
-     'https://www.trickscity.com/wp-content/uploads/2017/05/cool-facebook-profile-pictures-for-boy-hd.jpg',
-     'https://www.whatsapp-dp-images.in/wp-content/uploads/2019/10/best-whatsapp-dp-images-hd-download-8.jpg',
-     'https://www.wallpapertip.com/wmimgs/76-761129_world-famous-places-4k-wallpapers-sky-hd-wallpaper.jpg',
-     'https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://4.bp.blogspot.com/-4XMzZZUrRqs/WncjSiC7ePI/AAAAAAAAA3w/JZYCWhNbsFY_CRR0aQ1FzCxwHLjeKFHhgCLcBGAs/s1600/19.jpg',
-     'https://www.hdwallpapersfreedownload.com/uploads/large/birds/butterflies-hd-photos.jpg',
-     'https://www.trickscity.com/wp-content/uploads/2017/05/cool-facebook-profile-pictures-for-boy-hd.jpg',
-     'https://www.whatsapp-dp-images.in/wp-content/uploads/2019/10/best-whatsapp-dp-images-hd-download-8.jpg',
-     'https://www.wallpapertip.com/wmimgs/76-761129_world-famous-places-4k-wallpapers-sky-hd-wallpaper.jpg',
-     'https://images.unsplash.com/photo-1497316730643-415fac54a2af?ixid=MXwxMjA3fDB8MHxzZWFyY2h8NXx8cHJvZmlsZXxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80',
-     'https://avante.biz/wp-content/uploads/Profile-Pics-Wallpapers/Profile-Pics-Wallpapers-028.jpg',
-     'https://3.bp.blogspot.com/-ktQ-8FfBn3w/UfoVgK4QUVI/AAAAAAAAAIk/f85h2mNzFAQ/s1600/I-Love-You-2013-Photography-HD-Wallpaper-1080x675.jpg',
-     'https://www.kindpng.com/picc/m/148-1487262_anime-pic-for-boys-fb-profile-hd-png.png',
-     'https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg',
-     'https://4.bp.blogspot.com/-4XMzZZUrRqs/WncjSiC7ePI/AAAAAAAAA3w/JZYCWhNbsFY_CRR0aQ1FzCxwHLjeKFHhgCLcBGAs/s1600/19.jpg',
-     'https://www.hdwallpapersfreedownload.com/uploads/large/birds/butterflies-hd-photos.jpg',
-     'https://www.trickscity.com/wp-content/uploads/2017/05/cool-facebook-profile-pictures-for-boy-hd.jpg',
-     'https://www.whatsapp-dp-images.in/wp-content/uploads/2019/10/best-whatsapp-dp-images-hd-download-8.jpg',
-
-   ];
-
-
-
-
-  @override
   Widget build(BuildContext context) {
 
-    return new Scaffold(
+    Value detail=Value.fromJson(dummyjson);
+      return new Scaffold(
 
-      appBar: AppBar(
-        centerTitle: true,
-        title:  Text("Feed",
-        style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
-       ),
-
-
-      ),
-      drawer: MainDrawer(),
-      body:
+        appBar: AppBar(
+          centerTitle: true,
+          title:  Text("Feed",
+            style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+          ),
 
 
-       // for (var i = 0; i < 20; i++)    {
-      new ListView.builder(
-       itemCount: 50,
+        ),
+        drawer: MainDrawer(),
+        body: Container(
+          child:
+          ListView.builder(
+            itemCount:dummyjson.length,
 
-        itemBuilder: (context, index) {
-          return new Padding(
-            padding: new EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            child: new Card(
-              elevation: 5,
-              shape: new RoundedRectangleBorder(
-                borderRadius: new BorderRadius.circular(16.0),
-              ),
-              child: new Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
+            itemBuilder: (context, index) {
+              // var userdata = userList[index];
 
-                  new Padding(
 
-                    padding: new EdgeInsets.all(16.0),
-                    child: new Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
+              return new Padding(
+                padding: new EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+                child: new Card(
+                  elevation: 5,
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(16.0),
+                  ),
+                  child: new Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
 
-                        Row(
+                      new Padding(
+
+                        padding: new EdgeInsets.all(16.0),
+                        child: new Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Container(
-                              width: 35.0,
-                              height: 35.0,
-                              child: CircleAvatar(
-                                backgroundImage: NetworkImage(
-                                                 image[index]
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 10.0),
-                            Column(
+
+                            Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text( name[index]
-                                , style: TextStyle(
-                                    fontSize: 18,
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold)),
+                                Container(
+                                  width: 35.0,
+                                  height: 35.0,
+                                  child: CircleAvatar(
+                                    backgroundImage: NetworkImage(
+
+                                        detail.image
+
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: 10.0),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(//List[dummyjson].name
+                                        detail.name
+
+                                        , style: TextStyle(
+                                        fontSize: 18,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold)),
+                                  ],
+                                )
                               ],
-                            )
+                            ),
                           ],
                         ),
-                      ],
-                    ),
+                      ),
+
+                      new ClipRRect(
+                        child: new Image.network(
+                            detail.viewimage
+                        ),
+                        borderRadius: BorderRadius.only(
+                          topLeft: new Radius.circular(16.0),
+                          topRight: new Radius.circular(16.0),
+                        ),
+                      ),
+
+                    ],
+
                   ),
+                ),
 
-                  new ClipRRect(
-                    child: new Image.network(
-                            viewimage [index]
-                    ),
-                    borderRadius: BorderRadius.only(
-                      topLeft: new Radius.circular(16.0),
-                      topRight: new Radius.circular(16.0),
-                    ),
-                  ),
+              );
+            },
+            //physics: ScrollPhysics(),
 
-                ],
+          ),
+          //  }
+          //  }
+          // ),
 
-              ),
-            ),
+          //}  return Center(child: new Column(children: list));
 
-          );
-        },
-        //physics: ScrollPhysics(),
-
-      ),
-
-  //}  return Center(child: new Column(children: list));
-
-
-    );
+        ),
+      );
+    }
   }
-}
