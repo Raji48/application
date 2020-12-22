@@ -44,14 +44,14 @@ class _MainDrawerState extends State<MainDrawer>{
 
                       ),
                  Container(
-                     padding: EdgeInsets.all(80),
+                     padding: EdgeInsets.all(40),
                      width: MediaQuery.of(context).size.width,
                       child:Column(
                     // mainAxisAlignment: MainAxisAlignment.start,
 
                      children: [
 
-                      Text("Name: ${widget.name}"
+                      Text("User"
                      ,style: TextStyle(color: Colors.black,fontSize: 25),),
                      // Text( 'Raji',style:TextStyle(fontSize: 25,color:Colors.white),)
                     ],
