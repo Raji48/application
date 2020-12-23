@@ -260,141 +260,155 @@ class HomePage extends StatefulWidget{
 }
 
 class _HomePageState extends State<HomePage> {
-  User detail=User.fromJson(dummyjson);
-  //List Value;
-  ScrollController _scrollController=ScrollController();
-  int _currentmax = 10;
-@override
-void initState(){
-  super.initState();
-   //Value=List.generate(10, (index) => null);
-  detail.value=List.generate(10,(index)=>detail.value[index]);
+  User detail = User.fromJson(dummyjson);
 
-  _scrollController.addListener(() {
-    if(_scrollController.position.pixels==_scrollController.position.maxScrollExtent){
-      _getmoredata();
-    }
-  });
-}
- _getmoredata(){
-      for(int i = _currentmax;i<_currentmax+10;i++){
-       // mylist.add("Item : ${i+1}");
-       //detail.value.add(detail.value[]);
-        detail.value=List.generate(10,(index)=>detail.value[index]);
+
+  int x = 10;
+  bool y=true;
+  ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+
+        detail.value = List.generate(x, (index) => detail.value[index],);
+
+       _scrollController.addListener(() {
+      if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent)
+        {
+        if (x <= detail.value.length) {
+          _getmoredata();
+        }
+       x++;
+
+     }
+    });
+  }
+
+   _getmoredata() {
+      for (int i = 0; i < 10; i++) {
+         setState(() {
+           detail.value.add(detail.value[i]);
+             });
+
       }
-      _currentmax =_currentmax+10;
-      setState(() {
+    }
 
-      });
-}
+
+  @override
 
   Widget build(BuildContext context) {
+    //  User detail=User.fromJson(dummyjson);
 
+    return new Scaffold(
 
-  //  User detail=User.fromJson(dummyjson);
-
-
-      return new Scaffold(
-
-        appBar: AppBar(
-          centerTitle: true,
-          title:  Text("Feed",
-            style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
-          ),
-
-
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text("Feed",
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
         ),
-        drawer: MainDrawer(),
-        body:
 
-     // return
-        ListView.builder(
-             // itemExtent: 80,
-          controller: _scrollController,
+
+      ),
+      drawer: MainDrawer(),
+      body:
+      /*  y==true ? Container(
+        child: Center(
+                 child: Text("Loading"),
+        ),
+      );*/
+
+       //return
+      ListView.builder(
+
+        controller: _scrollController,
         itemBuilder: (context, index) {
-              // var userdata = userList[index];
-            if(index==detail.value.length){
+          // var userdata = userList[index];
+          /*  if(index==detail.value.length){
               return CupertinoActivityIndicator();
-            }
 
-             return new Padding(
-                padding: new EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-                child: new Card(
-                  //elevation: 5,
-                  shape: new RoundedRectangleBorder(
-                    borderRadius: new BorderRadius.circular(16.0),
-                  ),
-                  child: new Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+            }*/
+          return new Padding(
+            padding: new EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+            child: new Card(
+              //elevation: 5,
+              shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(16.0),
+              ),
+              child: new Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
 
-                      new Padding(
+                  new Padding(
 
-                        padding: new EdgeInsets.all(16.0),
-                        child: new Row(
-                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          //crossAxisAlignment: CrossAxisAlignment.start,
+                    padding: new EdgeInsets.all(16.0),
+                    child: new Row(
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      //crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 35.0,
-                                  height: 35.0,
-                                  child: CircleAvatar(
+                            Container(
+                              width: 35.0,
+                              height: 35.0,
+                              child: CircleAvatar(
                                 //   child: new Image.network(
-                                    backgroundImage: NetworkImage(
+                                backgroundImage: NetworkImage(
 
-                                        detail.value[index].image
-                                        //List.generate(10,(index)=> detail.value[index].image);
-                                    ),
-                                  ),
+                                    detail.value[index].image
 
                                 ),
-                                SizedBox(width: 10.0),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(//List[dummyjson].name
-                                        detail.value[index].name
+                              ),
 
-                                        , style: TextStyle(
-                                        fontSize: 18,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold)),
-                                  ],
-                                )
-                              ],
                             ),
+                            SizedBox(width: 10.0),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                    detail.value[index].name
+
+                                    , style: TextStyle(
+                                    fontSize: 18,
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold)),
+                              ],
+                            )
                           ],
                         ),
-                      ),
-
-                      new ClipRRect(
-                        child: new Image.network(
-                            detail.value[index].viewimage
-                        ),
-                        borderRadius: BorderRadius.only(
-                          topLeft: new Radius.circular(16.0),
-                          topRight: new Radius.circular(16.0),
-                        ),
-                      ),
-
-                    ],
-
+                      ],
+                    ),
                   ),
-                ),
 
-              );
-            },
-            //physics: ScrollPhysics(),
-             itemCount: detail.value.length +1,
+                  new ClipRRect(
+                    child: new Image.network(
+                        detail.value[index].viewimage
+                    ),
+                    borderRadius: BorderRadius.only(
+                      topLeft: new Radius.circular(16.0),
+                      topRight: new Radius.circular(16.0),
+                    ),
+                  ),
 
-          ),
+                ],
+
+              ),
+            ),
+
+          );
+        },
+
+        itemCount: detail.value.length,
+
+      ),
 
 
-      );
-    }
+    );
   }
+
+
+  }
+
