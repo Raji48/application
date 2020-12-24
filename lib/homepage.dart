@@ -157,6 +157,11 @@ var dummyjson={
      "viewimage": "https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg"
    },
    {
+     "name": "Sriji",
+     "image": "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg",
+     "viewimage": "https://personal.psu.edu/xqz5228/jpg.jpg"
+   },
+   {
      "name": "Geyana",
      "image": "https://personal.psu.edu/xqz5228/jpg.jpg",
      "viewimage": "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832__340.jpg"
@@ -266,12 +271,13 @@ class _HomePageState extends State<HomePage> {
   int x = 10;
   bool y=true;
   ScrollController _scrollController = ScrollController();
+  //List<String> name,image,viewimage = new List();
 
   @override
   void initState() {
     super.initState();
 
-        detail.value = List.generate(x, (index) => detail.value[index],);
+        detail.value = List.generate(10, (index) => detail.value[index],);
 
        _scrollController.addListener(() {
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent)
@@ -288,7 +294,10 @@ class _HomePageState extends State<HomePage> {
    _getmoredata() {
       for (int i = 0; i < 10; i++) {
          setState(() {
-           detail.value.add(detail.value[i]);
+           //name.add(detail.value[i].name);
+           //image.add(detail.value[i].name);
+          // viewimage.add(detail.value[i].viewimage);
+          detail.value.add(detail.value[i]);
              });
 
       }

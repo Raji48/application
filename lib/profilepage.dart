@@ -51,14 +51,16 @@ class _ProfilePageState extends State<ProfilePage> {
     if(_username.text == "" && _Sname.text == "" && _email.text =="" && _mobile.text =="" && _pass.text =="" ) {
       print("invalid");  }
     else {
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder:
+      Navigator.of(context).push(MaterialPageRoute(builder:
           (context) =>
           View(name: nameuser,
             suname: sname,
             umail: mail,
             umobilenum: mobilenum,
             pass: passuser,),),
+
       );
+
     }
 
     //(context, MaterialPageRoute(builder: (context)=>Nav(),),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/main_drawer.dart';
 import 'package:homepage/profilepage.dart';
+
 void main() {
   runApp(View());
 
@@ -59,28 +60,17 @@ class _ViewState extends State<View> {
                        onPressed: //save,
                            (){
 
-                        Navigator.of(context).pushReplacement(
-                            MaterialPageRoute(builder: (context)=>ProfilePage())
-
-                        );
-
-
-
-                       /*  Navigator.push(context, MaterialPageRoute(builder: (context){
-                        return ProfilePage();})
-                             );
-                             setState(() {
-                               Navigator.pushNamed(context,"/ProfilePage");
-                             }); */
+                       // Navigator.of(context).pushReplacement(
+                         //   MaterialPageRoute(builder: (context)=>ProfilePage()) );
+                           //  Navigator.of(context).popUntil(ModalRoute.withName('/ProfilrPage'));
+                             //Navigator.of(context).pushNamed('/ProfilePage');
+                            Navigator.pop(context);
+                             Navigator.of(context).pushReplacementNamed('/ProfilePage');
+                            //Navigator.popAndPushNamed(context, '/ProfilePage');
 
                            }
 
-                             //Navigator.pop(context,"/View");
 
-                             //Navigator.pushNamed(context, '/ProfilePage')
-                            // return MaterialPageRoute(builder: (_) => ProfilePage());
-
-                     //  },
                      ),
                    ),
 

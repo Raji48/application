@@ -75,9 +75,10 @@ class _MainDrawerState extends State<MainDrawer>{
             leading:Icon(Icons.arrow_back),
             title:Text('Log out',style:TextStyle(fontSize: 18),),
               onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage(),),
-               );
 
+                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                    LoginPage()), (Route<dynamic> route) => false);
+               // Navigator.popUntil(context, ModalRoute.withName('/LoginPage'));
               },
 
 
