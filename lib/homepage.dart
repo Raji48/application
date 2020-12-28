@@ -35,7 +35,7 @@ var dummyjson={
     "viewimage": "https://cutewallpaper.org/21/wallpapers-for-profile-picture/Profile-Wallpapers-66+-images-.jpg"
   },
   {
-    "name": "Saro",
+    "name": "Aishu",
     "image": "https://www.wallsnapy.com/img_gallery/stylish-love-profile-pictures-hd-1191978.jpg",
     "viewimage": "https://www.unigreet.com/wp-content/uploads/2020/04/Sweet-girl-dp.jpg"
   },
@@ -294,9 +294,6 @@ class _HomePageState extends State<HomePage> {
    _getmoredata() {
       for (int i = 0; i < 10; i++) {
          setState(() {
-           //name.add(detail.value[i].name);
-           //image.add(detail.value[i].name);
-          // viewimage.add(detail.value[i].viewimage);
           detail.value.add(detail.value[i]);
              });
 

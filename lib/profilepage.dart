@@ -239,6 +239,9 @@ class _ProfilePageState extends State<ProfilePage> {
                                 setState(() {
                                   y=!y;
                                 });
+                                setState(() {
+                                  enab=!enab;
+                                });
 
 
                               },
