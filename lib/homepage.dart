@@ -10,7 +10,15 @@ import 'package:homepage/user.dart';
 import 'dart:convert';
 import 'package:flutter/src/widgets/sliver.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:redux/redux.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+/*class ListState{
+  final List<String> items;
+  ListState({this.items})
+}
+*/
 
 
 
@@ -325,6 +333,7 @@ class _HomePageState extends State<HomePage> {
       );*/
 
        //return
+
       ListView.builder(
 
         controller: _scrollController,
