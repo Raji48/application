@@ -18,22 +18,22 @@ class ArticleLoadingState extends ArticleState {
 
 class ArticleLoadedState extends ArticleState {
 
-  List<Articles> articles;
+  List<User> details;
 
-  ArticleLoadedState({@required this.articles});
+  ArticleLoadedState({@required this.details});
 
   @override
   // TODO: implement props
-  List<Object> get props => [articles];
+  List<Object> get props => [details];
 }
 
 class ArticleErrorState extends ArticleState {
 
-  String message;
+  //String message;
 
-  ArticleErrorState({@required this.message});
+  //ArticleErrorState({@required this.message});
 
   @override
   // TODO: implement props
-  List<Object> get props => [message];
+  List<Object> get props => [];
 }

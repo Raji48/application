@@ -1,11 +1,21 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homepage/bloc_event.dart';
-import 'package:homepage/bloc_stae.dart';
+import 'package:homepage/bloc_state.dart';
+import 'package:homepage/homepage.dart';
+import 'package:homepage/user.dart';
+import 'dart:convert';
+
+import 'bloc.dart';
 
 class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
-  ArticleRepository repository;
+  var details;
 
-  ArticleBloc({@required this.repository});
+  //ArticleRepository repository;
+//  User details  =User.fromJson(dummyjson);
+  ArticleBloc({@required this.details}) : super(null);
+
 
   @override
   // TODO: implement initialState
@@ -16,12 +26,15 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     if (event is FetchArticlesEvent) {
       yield ArticleLoadingState();
       try {
-        List<Articles> articles = await repository.getArticles();
-        yield ArticleLoadedState(articles: articles);
+        //     User details  =User.fromJson(dummyjson);
+        // List<User> details = await details.getArticles();
+        //  yield ArticleLoadedState(details: details);
+        details = //details.map<User>((json) =>
+        User.fromJson(dummyjson);
+        yield ArticleLoadedState(details: details);
       } catch (e) {
-        yield ArticleErrorState(message: e.toString());
+        yield ArticleErrorState();
       }
     }
   }
-
 }
