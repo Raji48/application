@@ -279,7 +279,8 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage> {
 
-  ArticleBloc Bloc;
+ // ArticleBloc Bloc;
+  ArticleBloc articleBloc;
 
   User details = User.fromJson(dummyjson);
 
@@ -290,15 +291,15 @@ class _HomePageState extends State<HomePage> {
   //List<String> name,image,viewimage = new List();
 
   @override void initState() {
-  //super.initState();
+  super.initState();
  //  Bloc = ArticleBloc();
     BlocProvider(
       create: (context) =>
        ArticleBloc(details: details)..add(FetchArticlesEvent()),
-         child: buildArticleList(),
+         //child: buildArticleList(),
           
     );
-    //articleBloc = BlocProvider.of<ArticleBloc>(context);
+  //  articleBloc = BlocProvider.of<ArticleBloc>(context);
     //  articleBloc.add(FetchArticlesEvent());
     //buildArticleList();
 
@@ -357,7 +358,7 @@ class _HomePageState extends State<HomePage> {
        //return
 
      Container(
-     child: Center(child: buildArticleList())
+    // child: Center(child: buildArticleList())
         /*child: BlocListener<ArticleBloc, ArticleState>(
           listener: (context, state) {
             if (state is ArticleErrorState) {
@@ -370,21 +371,21 @@ class _HomePageState extends State<HomePage> {
             }
           },*/
 
-       /* child: BlocBuilder<ArticleBloc, ArticleState>(
+       child: BlocBuilder<ArticleBloc, ArticleState>(
           builder: (context, state) {
             if (state is ArticleInitialState) {
               return buildLoading();
             } else if (state is ArticleLoadingState) {
               return buildLoading();
             } else if (state is ArticleLoadedState) {
-             // return buildArticleList(state.details);
-              return buildLoading();
+              return buildArticleList(state.details);
+             // return buildLoading();
             } else if (state is ArticleErrorState) {
               //return buildErrorUi(state.message);
               return buildLoading();
             }
           },
-        ),*/
+        ),
         ),
 
       //)
@@ -479,8 +480,8 @@ class _HomePageState extends State<HomePage> {
 
     );
   }
- Widget buildArticleList() {
- //  User detail=User.fromJson(dummyjson);
+ Widget buildArticleList(List<User>details) {
+   User details=User.fromJson(dummyjson);
   // ArticleBloc Bloc = BlocProvider.of<ArticleBloc>(context),
     return ListView.builder(
 
