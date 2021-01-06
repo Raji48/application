@@ -268,7 +268,12 @@ var dummyjson={
    }
   ]
  };
-
+void main()=>runApp(
+    BlocProvider(
+       // create: (context) =>
+     //   ArticleBloc(details: details)..add(FetchArticlesEvent()),
+  //builder: (BuildContext context) => ArticleLoadedState(details: []),
+    child: HomePage()));
 
 class HomePage extends StatefulWidget{
 
@@ -282,7 +287,7 @@ class _HomePageState extends State<HomePage> {
  // ArticleBloc Bloc;
   ArticleBloc articleBloc;
 
-  User details = User.fromJson(dummyjson);
+ // User details = User.fromJson(dummyjson);
 
 
   int x = 10;
@@ -290,18 +295,25 @@ class _HomePageState extends State<HomePage> {
   ScrollController _scrollController = ScrollController();
   //List<String> name,image,viewimage = new List();
 
+
   @override void initState() {
   super.initState();
- //  Bloc = ArticleBloc();
+
     BlocProvider(
       create: (context) =>
-       ArticleBloc(details: details)..add(FetchArticlesEvent()),
-         //child: buildArticleList(),
-          
-    );
-  //  articleBloc = BlocProvider.of<ArticleBloc>(context);
+     ArticleBloc(details:details)..add(FetchArticlesEvent()),
+     );
+
+   // articleBloc = ArticleBloc();
+   // super.initState();
+     // articleBloc = BlocProvider.of<ArticleBloc>(context);
     //  articleBloc.add(FetchArticlesEvent());
     //buildArticleList();
+    /*BlocProvider(
+      builder: (BuildContext context) => ArticleLoadedState(details: [details]),
+      child: HomePage(),
+    );*/
+
 
        /* detail.value = List.generate(10, (index) => detail.value[index],);
 
@@ -334,7 +346,7 @@ class _HomePageState extends State<HomePage> {
    // final Bloc = BlocProvider.of(context);
 
        // Bloc: Bloc,
-
+   // articleBloc.add(FetchArticlesEvent());
    return new Scaffold(
 
       appBar: AppBar(
@@ -347,8 +359,7 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: MainDrawer(),
       body:
-      //  buildLoading()
-      // buildArticleList()
+
       /*  y==true ? Container(
         child: Center(
                  child: Text("Loading"),
@@ -356,6 +367,7 @@ class _HomePageState extends State<HomePage> {
       );*/
 
        //return
+
 
      Container(
     // child: Center(child: buildArticleList())
@@ -370,14 +382,15 @@ class _HomePageState extends State<HomePage> {
               return buildLoading();
             }
           },*/
+      // Stream<articleBloc>FetchArticlesEvent() async*{}
 
-       child: BlocBuilder<ArticleBloc, ArticleState>(
+          child: BlocBuilder<ArticleBloc, ArticleState>(
           builder: (context, state) {
-            if (state is ArticleInitialState) {
+              if (state is ArticleInitialState) {
               return buildLoading();
             } else if (state is ArticleLoadingState) {
               return buildLoading();
-            } else if (state is ArticleLoadedState) {
+            } if (state is ArticleLoadedState) {
               return buildArticleList(state.details);
              // return buildLoading();
             } else if (state is ArticleErrorState) {
@@ -385,7 +398,8 @@ class _HomePageState extends State<HomePage> {
               return buildLoading();
             }
           },
-        ),
+
+        )
         ),
 
       //)
@@ -480,7 +494,7 @@ class _HomePageState extends State<HomePage> {
 
     );
   }
- Widget buildArticleList(List<User>details) {
+ Widget buildArticleList(List<User> details) {
    User details=User.fromJson(dummyjson);
   // ArticleBloc Bloc = BlocProvider.of<ArticleBloc>(context),
     return ListView.builder(

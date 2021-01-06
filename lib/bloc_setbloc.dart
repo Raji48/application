@@ -10,11 +10,12 @@ import 'bloc.dart';
 
 class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
-  var details;
+  User details;
 
-  //ArticleRepository repository;
-//  User details  =User.fromJson(dummyjson);
-  ArticleBloc({@required this.details}) : super(null);
+
+
+
+ ArticleBloc({@required this.details}): super(ArticleInitialState());
 
 
   @override
@@ -23,18 +24,28 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
   @override
   Stream<ArticleState> mapEventToState(ArticleEvent event) async* {
-    if (event is FetchArticlesEvent) {
-      yield ArticleLoadingState();
+   if (event is FetchArticlesEvent) {
+    yield ArticleLoadingState();
       try {
-        //     User details  =User.fromJson(dummyjson);
-        // List<User> details = await details.getArticles();
-        //  yield ArticleLoadedState(details: details);
-        details = //details.map<User>((json) =>
-        User.fromJson(dummyjson);
-        yield ArticleLoadedState(details: details);
-      } catch (e) {
+
+            details=User.fromJson(dummyjson);
+           ArticleLoadedState(details:details);
+     } catch (e) {
         yield ArticleErrorState();
-      }
+     }
     }
   }
 }
+
+
+//  List<User> details = List<User>.from(dummyjson.map((i) => User.fromJson(i)))
+//details.value=List.generate(10, (index) => details.value[index]);
+//await details.getArticles();
+//  yield ArticleLoadedState(details: details);
+//   details = //details.map<User>((json) =>
+//User.fromJson(dummyjson);
+
+//details  = User.fromJson(dummyjson);
+// details = (j/son.decode(User.fromJson(dummyjson).value.List);
+//.map((dummyjson) => details.fromJson(dummyjson))
+//  .toList();
