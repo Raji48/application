@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homepage/bloc_event.dart';
 import 'package:homepage/bloc_state.dart';
@@ -6,7 +6,7 @@ import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
 import 'dart:convert';
 
-import 'bloc.dart';
+
 
 class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
@@ -29,6 +29,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
       try {
 
             details=User.fromJson(dummyjson);
+
            ArticleLoadedState(details:details);
      } catch (e) {
         yield ArticleErrorState();
@@ -36,7 +37,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
     }
   }
 }
-
+*/
 
 //  List<User> details = List<User>.from(dummyjson.map((i) => User.fromJson(i)))
 //details.value=List.generate(10, (index) => details.value[index]);
@@ -49,3 +50,23 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 // details = (j/son.decode(User.fromJson(dummyjson).value.List);
 //.map((dummyjson) => details.fromJson(dummyjson))
 //  .toList();
+
+import 'package:homepage/bloc_event.dart';
+import 'package:homepage/bloc_state.dart';
+import 'package:homepage/homepage.dart';
+import 'package:homepage/user.dart';
+
+AppState appStateReducer(AppState state, action){
+  return AppState
+    (details: itemReducer(state.details, action));
+}
+
+List<User>itemReducer(List<User> state, action)
+{
+  if(action is AddAction){
+    return []..addAll(state);
+      //..add(User.fromJson(dummyjson));
+
+  }
+  return state;
+}

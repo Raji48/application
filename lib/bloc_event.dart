@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+/*import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
@@ -14,4 +14,20 @@ class FetchArticlesEvent extends ArticleEvent {
   List<Object> get props => [];
 
 
+}*/
+
+import 'package:flutter/cupertino.dart';
+import 'package:homepage/homepage.dart';
+import 'package:homepage/user.dart';
+
+import 'package:flutter/foundation.dart';
+ User details=User.fromJson(dummyjson);
+
+class AppState{
+  final List<User> details;
+
+  AppState({
+    @required this.details,
+});
+  AppState.initialState(): details = List.unmodifiable(<User>[]);
 }
