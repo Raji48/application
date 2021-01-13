@@ -1,4 +1,4 @@
-/*import 'package:equatable/equatable.dart';
+import 'package:equatable/equatable.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
 import 'package:meta/meta.dart';
@@ -20,13 +20,13 @@ class ArticleLoadingState extends ArticleState {
 
 class ArticleLoadedState extends ArticleState {
 
- List<User> details;
+   User details;
 
   ArticleLoadedState({@required this.details});
 
   @override
   // TODO: implement props
-  List<Object> get props =>[details];
+  List<Object> get props =>[];
 }
 
 class ArticleErrorState extends ArticleState {
@@ -34,8 +34,8 @@ class ArticleErrorState extends ArticleState {
   @override
   // TODO: implement props
   List<Object> get props => [];
-}*/
-import 'package:homepage/bloc_event.dart';
+}
+/*import 'package:homepage/bloc_event.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
 
@@ -44,4 +44,4 @@ class AddAction{
   final String details;
 
   AddAction(this.details){}
-}
+}*/

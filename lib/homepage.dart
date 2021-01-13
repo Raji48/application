@@ -270,7 +270,7 @@ var dummyjson={
      //   ArticleBloc(details: details)..add(FetchArticlesEvent()),
   //builder: (BuildContext context) => ArticleLoadedState(details: []),
     child: HomePage()));*/
-void main() => runApp(MyPage());
+/*void main() => runApp(MyPage());
 class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -285,7 +285,7 @@ class MyPage extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 class HomePage extends StatefulWidget{
 
@@ -296,10 +296,8 @@ class HomePage extends StatefulWidget{
 
 class _HomePageState extends State<HomePage> {
 
- // ArticleBloc Bloc;
-//  ArticleBloc articleBloc;
 
- // User details = User.fromJson(dummyjson);
+ ArticleBloc articleBloc;
 
 
   int x = 10;
@@ -308,25 +306,10 @@ class _HomePageState extends State<HomePage> {
   //List<String> name,image,viewimage = new List();
 
 
-  /*@override void initState() {
+  @override void initState() {
   super.initState();
-
-    BlocProvider(
-      create: (context) =>
-     ArticleBloc(details:details)..add(FetchArticlesEvent()),
-     );
-
-   // articleBloc = ArticleBloc();
-   // super.initState();
-     // articleBloc = BlocProvider.of<ArticleBloc>(context);
-    //  articleBloc.add(FetchArticlesEvent());
-    //buildArticleList();
-    /*BlocProvider(
-      builder: (BuildContext context) => ArticleLoadedState(details: [details]),
-      child: HomePage(),
-    );*/
-
-
+     articleBloc =ArticleBloc(ArticleInitialState());
+      articleBloc.add(FetchArticlesEvent());
        /* detail.value = List.generate(10, (index) => detail.value[index],);
 
        _scrollController.addListener(() {
@@ -349,7 +332,7 @@ class _HomePageState extends State<HomePage> {
 
       }*/
     }
-*/
+
 
   @override
 
@@ -371,14 +354,14 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: MainDrawer(),
       body:
-          StoreConnector<AppState,_viewModel>(
+         /* StoreConnector<AppState,_viewModel>(
             converter:(Store<AppState> store)=> _viewModel.create(store),
            builder:(BuildContext context,_viewModel)=>Column(
              children: [
               AddItemWidget(_viewModel)
          ],
      ),
-   ),
+   ),*/
       /*  y==true ? Container(
         child: Center(
                  child: Text("Loading"),
@@ -388,22 +371,10 @@ class _HomePageState extends State<HomePage> {
        //return
 
 
-    /* Container(
-    // child: Center(child: buildArticleList())
-        /*child: BlocListener<ArticleBloc, ArticleState>(
-          listener: (context, state) {
-            if (state is ArticleErrorState) {
-            /*  Scaffold.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(state.null),
-                ),
-              );*/
-              return buildLoading();
-            }
-          },*/
-      // Stream<articleBloc>FetchArticlesEvent() async*{}
+     Container(
 
-          child: BlocBuilder<ArticleBloc, ArticleState>(
+         child: BlocBuilder<ArticleBloc, ArticleState>(
+         cubit:articleBloc,
           builder: (context, state) {
               if (state is ArticleInitialState) {
               return buildLoading();
@@ -420,24 +391,107 @@ class _HomePageState extends State<HomePage> {
 
         )
         ),
-*/
+
       //)
 
 
 
     );
   }
- /*Widget buildArticleList(List<User> details) {
-   User details=User.fromJson(dummyjson);
-  // ArticleBloc Bloc = BlocProvider.of<ArticleBloc>(context),
+ Widget buildArticleList(User details) {
+   return ListView.builder(
 
-  }
+     //controller: _scrollController,
+     itemBuilder: (context, index) {
+       // var userdata = userList[index];
+       /*  if(index==detail.value.length){
+              return CupertinoActivityIndicator();
+
+            }*/
+       return new Padding(
+         padding: new EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+         child: new Card(
+           //elevation: 5,
+           shape: new RoundedRectangleBorder(
+             borderRadius: new BorderRadius.circular(16.0),
+           ),
+           child: new Column(
+             mainAxisAlignment: MainAxisAlignment.start,
+             crossAxisAlignment: CrossAxisAlignment.start,
+             children: [
+
+               new Padding(
+
+                 padding: new EdgeInsets.all(16.0),
+                 child: new Row(
+                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                   //crossAxisAlignment: CrossAxisAlignment.start,
+                   children: [
+
+                     Row(
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children: [
+                         Container(
+                           width: 35.0,
+                           height: 35.0,
+                           child: CircleAvatar(
+                             //   child: new Image.network(
+                             backgroundImage: NetworkImage(
+
+                                 details.value[index].image
+
+                             ),
+                           ),
+
+                         ),
+                         SizedBox(width: 10.0),
+                         Column(
+                           crossAxisAlignment: CrossAxisAlignment.start,
+                           children: [
+                             Text(
+                                 details.value[index].name
+
+                                 , style: TextStyle(
+                                 fontSize: 18,
+                                 color: Colors.black,
+                                 fontWeight: FontWeight.bold)),
+                           ],
+                         )
+                       ],
+                     ),
+                   ],
+                 ),
+               ),
+
+               new ClipRRect(
+                 child: new Image.network(
+                     details.value[index].viewimage
+                 ),
+                 borderRadius: BorderRadius.only(
+                   topLeft: new Radius.circular(16.0),
+                   topRight: new Radius.circular(16.0),
+                 ),
+               ),
+
+             ],
+
+           ),
+         ),
+
+       );
+     },
+
+     itemCount: details.value.length,
+
+   );
+
+ }
 
   Widget buildLoading() {
     return Center(
       child: CircularProgressIndicator(),
     );
-  }*/
+  }
   /*Widget buildErrorUi(String message) {
     return Center(
       child: Padding(
@@ -453,14 +507,14 @@ class _HomePageState extends State<HomePage> {
 
   }
 
-class AddItemWidget extends StatelessWidget {
+/*class AddItemWidget extends StatelessWidget {
   final _viewModel model;
 
   AddItemWidget(this.model);
 
   @override
   Widget build(BuildContext context) {
-    User details= User.fromJson(dummyjson);
+   // User details= User.fromJson(dummyjson);
     return ListView.builder(
 
       //controller: _scrollController,
@@ -559,3 +613,4 @@ class AddItemWidget extends StatelessWidget {
           details: store.state.details);
     }
   }
+*/

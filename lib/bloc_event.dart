@@ -1,4 +1,4 @@
-/*import 'package:equatable/equatable.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
@@ -11,12 +11,12 @@ class FetchArticlesEvent extends ArticleEvent {
   @override
   // TODO: implement props
 
-  List<Object> get props => [];
+  List<Object> get props => null;
 
 
-}*/
+}
 
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
 
@@ -30,4 +30,4 @@ class AppState{
     @required this.details,
 });
   AppState.initialState(): details = List.unmodifiable(<User>[]);
-}
+}*/
