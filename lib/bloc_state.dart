@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+/*import 'package:equatable/equatable.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
 import 'package:meta/meta.dart';
@@ -34,14 +34,14 @@ class ArticleErrorState extends ArticleState {
   @override
   // TODO: implement props
   List<Object> get props => [];
-}
-/*import 'package:homepage/bloc_event.dart';
+}*/
+import 'package:homepage/bloc_event.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
 
  //User details=User.fromJson(dummyjson);
 class AddAction{
-  final String details;
+  User details;
 
   AddAction(this.details){}
-}*/
+}

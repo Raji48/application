@@ -1,12 +1,10 @@
-import 'package:flutter/cupertino.dart';
+/*import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:homepage/bloc_event.dart';
 import 'package:homepage/bloc_state.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
 import 'dart:convert';
-
-
 
 class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 
@@ -21,19 +19,19 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
   @override
   Stream<ArticleState> mapEventToState(ArticleEvent event) async* {
    if (event is FetchArticlesEvent) {
-    yield ArticleLoadingState();
-      try {
+   yield ArticleLoadingState();
+     try {
 
-            details=User.fromJson(dummyjson);
+           details=User.fromJson(dummyjson);
 
-           ArticleLoadedState(details:details);
+             yield ArticleLoadedState(details:details);
      } catch (e) {
         yield ArticleErrorState();
-     }
+    }
     }
   }
 }
-
+*/
 
 //  List<User> details = List<User>.from(dummyjson.map((i) => User.fromJson(i)))
 //details.value=List.generate(10, (index) => details.value[index]);
@@ -47,7 +45,7 @@ class ArticleBloc extends Bloc<ArticleEvent, ArticleState> {
 //.map((dummyjson) => details.fromJson(dummyjson))
 //  .toList();
 
-/*import 'package:homepage/bloc_event.dart';
+import 'package:homepage/bloc_event.dart';
 import 'package:homepage/bloc_state.dart';
 import 'package:homepage/homepage.dart';
 import 'package:homepage/user.dart';
@@ -65,4 +63,4 @@ List<User>itemReducer(List<User> state, action)
 
   }
   return state;
-}*/
+}

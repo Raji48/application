@@ -264,13 +264,8 @@ var dummyjson={
    }
   ]
  };
-/*void main()=>runApp(
-    BlocProvider(
-       // create: (context) =>
-     //   ArticleBloc(details: details)..add(FetchArticlesEvent()),
-  //builder: (BuildContext context) => ArticleLoadedState(details: []),
-    child: HomePage()));*/
-/*void main() => runApp(MyPage());
+
+void main() => runApp(MyPage());
 class MyPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -285,7 +280,7 @@ class MyPage extends StatelessWidget {
       ),
     );
   }
-}*/
+}
 
 class HomePage extends StatefulWidget{
 
@@ -297,25 +292,25 @@ class HomePage extends StatefulWidget{
 class _HomePageState extends State<HomePage> {
 
 
- ArticleBloc articleBloc;
+
 
 
   int x = 10;
   bool y=true;
-  ScrollController _scrollController = ScrollController();
+ // ScrollController _scrollController = ScrollController();
   //List<String> name,image,viewimage = new List();
 
-
-  @override void initState() {
+  //ArticleBloc articleBloc;
+  /*@override void initState() {
   super.initState();
-     articleBloc =ArticleBloc(ArticleInitialState());
-      articleBloc.add(FetchArticlesEvent());
-       /* detail.value = List.generate(10, (index) => detail.value[index],);
+    // articleBloc =ArticleBloc(ArticleInitialState());
+     // articleBloc.add(FetchArticlesEvent());
+       details.value = List.generate(10, (index) => details.value[index],);
 
        _scrollController.addListener(() {
       if (_scrollController.position.pixels == _scrollController.position.maxScrollExtent)
         {
-        if (x <= detail.value.length) {
+        if (x <= details.value.length) {
           _getmoredata();
         }
        x++;
@@ -327,21 +322,17 @@ class _HomePageState extends State<HomePage> {
    _getmoredata() {
       for (int i = 0; i < 10; i++) {
          setState(() {
-          detail.value.add(detail.value[i]);
+          details.value.add(details.value[i]);
              });
 
-      }*/
-    }
+      }
+    }*/
 
 
   @override
 
   Widget build(BuildContext context) {
-    //  User detail=User.fromJson(dummyjson);
-   // final Bloc = BlocProvider.of(context);
 
-       // Bloc: Bloc,
-   // articleBloc.add(FetchArticlesEvent());
    return  Scaffold(
 
       appBar: AppBar(
@@ -353,52 +344,51 @@ class _HomePageState extends State<HomePage> {
 
       ),
       drawer: MainDrawer(),
-      body:
-         /* StoreConnector<AppState,_viewModel>(
-            converter:(Store<AppState> store)=> _viewModel.create(store),
-           builder:(BuildContext context,_viewModel)=>Column(
-             children: [
-              AddItemWidget(_viewModel)
+      body:SingleChildScrollView(
+        child:StoreConnector<AppState,_ViewModel>(
+            converter:(Store<AppState> store)=> _ViewModel.create(store),
+           builder:(BuildContext context,_ViewModel _viewModel)=>Column(
+            children: [
+             AddItemWidget(_viewModel)
+
          ],
      ),
-   ),*/
-      /*  y==true ? Container(
+   ),
+
+      ),/*  y==true ? Container(
         child: Center(
                  child: Text("Loading"),
         ),
       );*/
 
        //return
+    /*  BlocBuilder<ArticleBloc, ArticleState>(
+       cubit: articleBloc,
 
+       builder: (context, state) {
+         if (state is ArticleInitialState) {
+           return buildLoading();
+         }
+         else if (state is ArticleLoadingState) {
+           return buildLoading();
+         }
+         if (state is ArticleLoadedState) {
+           return buildList(state.details);
+           // return buildLoading();
 
-     Container(
+         } else if (state is ArticleErrorState) {
+           //return buildErrorUi(state.message);
+           return buildLoading();
+         }
+         return null;
+       },
 
-         child: BlocBuilder<ArticleBloc, ArticleState>(
-         cubit:articleBloc,
-          builder: (context, state) {
-              if (state is ArticleInitialState) {
-              return buildLoading();
-            } else if (state is ArticleLoadingState) {
-              return buildLoading();
-            } if (state is ArticleLoadedState) {
-              return buildArticleList(state.details);
-             // return buildLoading();
-            } else if (state is ArticleErrorState) {
-              //return buildErrorUi(state.message);
-              return buildLoading();
-            }
-          },
-
-        )
-        ),
-
-      //)
-
-
+     )*/
 
     );
   }
- Widget buildArticleList(User details) {
+ /*  Widget buildList(User details) {
+
    return ListView.builder(
 
      //controller: _scrollController,
@@ -408,6 +398,7 @@ class _HomePageState extends State<HomePage> {
               return CupertinoActivityIndicator();
 
             }*/
+
        return new Padding(
          padding: new EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
          child: new Card(
@@ -487,11 +478,11 @@ class _HomePageState extends State<HomePage> {
 
  }
 
-  Widget buildLoading() {
+    Widget buildLoading() {
     return Center(
       child: CircularProgressIndicator(),
     );
-  }
+  } */
   /*Widget buildErrorUi(String message) {
     return Center(
       child: Padding(
@@ -507,16 +498,19 @@ class _HomePageState extends State<HomePage> {
 
   }
 
-/*class AddItemWidget extends StatelessWidget {
-  final _viewModel model;
+class AddItemWidget extends StatelessWidget {
+ final _ViewModel model;
 
   AddItemWidget(this.model);
-
+ ScrollController _scrollController = new ScrollController();
   @override
   Widget build(BuildContext context) {
    // User details= User.fromJson(dummyjson);
     return ListView.builder(
-
+      controller: _scrollController,
+      physics: ClampingScrollPhysics(),
+      scrollDirection: Axis.vertical,
+       shrinkWrap: true,
       //controller: _scrollController,
       itemBuilder: (context, index) {
         // var userdata = userList[index];
@@ -603,14 +597,14 @@ class _HomePageState extends State<HomePage> {
 
   }
 }
-  class _viewModel {
-    final List<User> details;
+  class _ViewModel {
+   final List<User> details;
   //  final Function(String) onAddItem;
-    _viewModel({this.details});
+  //  User details;
+    _ViewModel({this.details});
 
-    factory _viewModel.create(Store<AppState> store) {
-      return _viewModel(
+    factory _ViewModel.create(Store<AppState> store) {
+      return _ViewModel(
           details: store.state.details);
     }
   }
-*/

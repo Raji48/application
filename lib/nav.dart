@@ -12,8 +12,8 @@ class Nav extends StatefulWidget{
 class _NavState extends State<Nav>{
   int _currentIndex =0;
   final List<Widget> _children=[
-   // MyPage(),
-    HomePage(),
+    MyPage(),
+    //HomePage(),
     SettingsPage(),
     ProfilePage(),
 
