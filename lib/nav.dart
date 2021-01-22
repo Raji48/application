@@ -5,13 +5,13 @@ import 'package:homepage/profilepage.dart';
 import 'package:homepage/settingspage.dart';
 
 
-
+//bool nav =true;
 class Nav extends StatefulWidget{
   _NavState createState()=>_NavState();
 }
-class _NavState extends State<Nav>{
+ class _NavState extends State<Nav>{
   int _currentIndex =0;
-  final List<Widget> _children=[
+   List<Widget> _children=[
     MyPage(),
     //HomePage(),
     SettingsPage(),
@@ -26,7 +26,7 @@ class _NavState extends State<Nav>{
   }
 
   Widget build(BuildContext context){
-    return new Scaffold(
+   return Scaffold(
 
        body:_children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(

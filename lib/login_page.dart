@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage>{
   Widget build(BuildContext context){
     TextEditingController emailController =new TextEditingController();
     TextEditingController pwdController =new TextEditingController();
-    return Scaffold(
+    return new Scaffold(
       resizeToAvoidBottomPadding: false,
       body:GestureDetector(
         onTap: (){
@@ -79,9 +79,14 @@ class _LoginPageState extends State<LoginPage>{
                     onPressed:
                         (){
 
-                          //Navigator.popAndPushNamed(context, '/Nav');
-                          Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Nav(),),);
-
+                        //  Navigator.popAndPushNamed(context, '/Nav');
+                        //  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Nav(),),);
+                         // Navigator.of(context).pushNamed('/Nav');
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Nav()),
+                          );
                       
                     },
                   ),

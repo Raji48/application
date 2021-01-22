@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:homepage/login_page.dart';
 import 'package:homepage/profilepage.dart';
 
+import 'nav.dart';
+
 
 class MainDrawer extends StatefulWidget {
   final String name;
@@ -76,9 +78,18 @@ class _MainDrawerState extends State<MainDrawer>{
             title:Text('Log out',style:TextStyle(fontSize: 18),),
               onTap: (){
 
-                Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+                Navigator.pop(context);
+               Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
                     LoginPage()), (Route<dynamic> route) => false);
-               // Navigator.popUntil(context, ModalRoute.withName('/LoginPage'));
+              // setState(() {
+               //  nav =!nav;
+               //});
+
+                //Navigator.pushNamedAndRemoveUntil(context, '/LoginPage', (route) => route.isFirst);
+              //  Navigator.popUntil(context, ModalRoute.withName('/LoginPage'));
+               // Navigator.pop(context);
+               // Navigator.of(context).pushReplacementNamed('/LoginPage');
+
               },
 
 
